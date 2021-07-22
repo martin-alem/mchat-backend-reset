@@ -7,13 +7,13 @@
 class SendResponse {
 
 	/**
-     * Sends a success response to the client
-     * @param {number} statusCode http status code
-     * @param {object} headers optional http headers
-     * @param {string} message  optional body
-     * @param {object} req request object
-     * @param {object} res responses object 
-     */
+	 * Sends a success response to the client
+	 * @param {number} statusCode http status code
+	 * @param {object} headers optional http headers
+	 * @param {string} message  optional body
+	 * @param {object} req request object
+	 * @param {object} res responses object 
+	 */
 	static successResponse(statusCode = 200, req, res, message = "", headers = {}) {
 		res.type("json");
 		res.status(statusCode);
@@ -24,6 +24,8 @@ class SendResponse {
 		res.set("Access-Control-Max-Age", 86400);
 		res.set("Date", new Date().toUTCString());
 		res.set("Connection", "keep-alive");
+		res.set("X-Server-Name", "Password Reset");
+		res.set("X-Server-Version", "1.0.0");
 		res.set("X-Powered-By", "mchat");
 
 		// if the headers contain information add the res.
@@ -45,12 +47,12 @@ class SendResponse {
 
 
 	/**
-     * Sends a failed response to the client
-     * @param {number} statusCode http status code
-     * @param {string} error  error message
-     * @param {object} req request object
-     * @param {object} res responses object 
-     */
+	 * Sends a failed response to the client
+	 * @param {number} statusCode http status code
+	 * @param {string} error  error message
+	 * @param {object} req request object
+	 * @param {object} res responses object 
+	 */
 	static failedResponse(statusCode = 500, req, res, error) {
 		res.type("json");
 		res.status(statusCode);
@@ -61,6 +63,8 @@ class SendResponse {
 		res.set("Access-Control-Max-Age", 86400);
 		res.set("Date", new Date().toUTCString());
 		res.set("Connection", "keep-alive");
+		res.set("X-Server-Name", "Password Reset");
+		res.set("X-Server-Version", "1.0.0");
 		res.set("X-Powered-By", "mchat");
 
 		const responseObject = {
