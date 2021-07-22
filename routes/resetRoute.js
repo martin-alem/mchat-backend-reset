@@ -16,24 +16,24 @@ const ResendController = require(path.join(__dirname, "../controllers/ResendCont
 const ChangeController = require(path.join(__dirname, "../controllers/ChangeController"));
 
 router.post("/", ResetController.middleware(), (req, res) => {
-    ResetController.requestReset(req, res);
+	ResetController.resetRequest(req, res);
 });
 
 router.post("/verify", VerifyController.middleware(), (req, res) => {
-    VerifyController.verifyUser(req, res);
+	VerifyController.verifyUser(req, res);
 });
 
-router.post("/Change", ChangeController.middleware(), (req, res) => {
-    ChangeController.change(req, res);
+router.post("/change", ChangeController.middleware(), (req, res) => {
+	ChangeController.change(req, res);
 });
 
 router.post("/verify/resend", ResendController.middleware(), (req, res) => {
-    ResendController.resendCode(req, res);
+	ResendController.resendCode(req, res);
 });
 
 router.use((error, req, res, next) => {
-    Logger.logError(error.error, __filename, new Date());
-    SendResponse.failedResponse(error.statusCode, req, res, error.error);
+	Logger.logError(error.error, __filename, new Date());
+	SendResponse.failedResponse(error.statusCode, req, res, error.error);
 });
 
 module.exports = router;
