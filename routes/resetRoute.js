@@ -15,7 +15,6 @@ const VerifyController = require(path.join(__dirname, "../controllers/VerifyCont
 const ResendController = require(path.join(__dirname, "../controllers/ResendController"));
 const ChangeController = require(path.join(__dirname, "../controllers/ChangeController"));
 
-
 router.post("/", ResetController.middleware(), (req, res) => {
 	ResetController.resetRequest(req, res);
 });
