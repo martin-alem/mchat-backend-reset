@@ -13,7 +13,7 @@ class PingController extends Controller {
 	static ping(req, res) {
 
 		const statusCode = 200;
-		const message = "Signup server up and running";
+		const message = "Password Reset server up and running";
 		SendResponse.successResponse(statusCode, req, res, message);
 	}
 
